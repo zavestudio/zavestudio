@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zave Store</title>
+        
+        <!-- Panggil Tailwind CSS dulu -->
+        <script src="https://cdn.tailwindcss.com"></script>
+      
+        <!-- Baru atur konfigurasi setelahnya -->
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                screens: {
+                  xs: "0px",
+                  ssm: "480px",
+                },
+              },
+            },
+          };
+        </script>
+      </head>      
+  <body class="bg-gray-100 text-center">
+    <!-- Header -->
+    <header class="border-b py-2 flex justify-center items-center fixed bg-white w-full">
+      <img
+        src=""
+        alt="Zave"
+        class="h-5"
+      />
+    </header>
+
+    <!-- Halaman Home -->
+    <main
+      id="homePage"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-10 max-w-6xl mx-auto"
+    >
+<!-- Product Item -->
+<div
+  class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer"
+  onclick="showProduct(1)"
+>
+  <img
+    src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp"
+    class="w-fit h-52 object-cover rounded mx-auto"
+  />
+  <p class="mt-3 font-medium text-gray-700 text-center text-sm">
+    Baju Eksklusif
+  </p>
+  <p class="text-center font-bold text-black text-sm">Rp 100.000</p>
+</div>
+
+
+      <div
+        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
+        onclick="showProduct(2)"
+      >
+        <img
+          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
+          class="w-fit h-52 object-cover rounded mx-auto"
+        />
+        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
+          Topi Limited
+        </p>
+        <p class="text-center font-bold text-black text-sm">Rp 200.000</p>
+      </div>
+
+      <div
+        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
+        onclick="showProduct(3)"
+      >
+        <img
+          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
+          class="w-fit h-52 object-cover rounded mx-auto"
+        />
+        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
+          Topi Limited
+        </p>
+        <p class="text-center font-bold text-black text-sm">Rp 200.000</p>
+      </div>
+
+      <div
+        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
+        onclick="showProduct(4)"
+      >
+        <img
+          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
+          class="w-fit h-52 object-cover rounded mx-auto"
+        />
+        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
+          Topi Limited
+        </p>
+        <p class="text-center font-bold text-black text-sm">Rp 200.000</p>
+      </div>
+
+      <div
+        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
+        onclick="showProduct(4)"
+      >
+        <img
+          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
+          class="w-fit h-52 object-cover rounded mx-auto"
+        />
+        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
+          Coming Soon
+        </p>
+      </div>
+
+    </main>
+
+    <div class="flex flex-col items-center my-10">
+      <h3 class="text-xl font-bold mb-4">OUR SHOP</h3>
+      <a href="http://shopee.co.id/zave.studio" target="_blank"
+         class="flex items-center gap-2 border-2 border-black px-4 py-2 rounded-full hover:bg-orange-100 transition">
+        <img src="https://img.icons8.com/?size=512&id=mBkyWceUPlkM&format=png" alt="Shopee" class="w-6 h-6" />
+        <span class="text-orange-500 font-medium text-lg">Shopee</span>
+      </a>
+    </div>
+    
+    
+    
+
+    <!-- Halaman Produk -->
+    <div id="productPage" class="hidden px-4 py-10 max-w-4xl mx-auto text-left">
+      <button onclick="backToHome()" class="mb-4 text-blue-500">
+        ← Kembali
+      </button>
+      <div class="flex xs:flex-col ssm:flex-row gap-10">
+        <div class="flex-1">
+          <img
+            id="productImg"
+            class="w-full max-w-sm rounded-lg border"
+            alt="Product Image"
+          />
+          <div class="flex gap-2 mt-2" id="thumbContainer"></div>
+        </div>
+        <div class="flex-1">
+          <h2 id="productTitle" class="text-xl font-bold mb-2"></h2>
+          <p id="productPrice" class="font-semibold mb-4"></p>
+
+          <div class="mt-6">
+            <h3 class="font-bold">Deskripsi</h3>
+            <ul id="descList" class="list-disc pl-5 text-sm"></ul>
+          </div>
+
+          <!-- Tombol dipindah ke sini -->
+          <a
+            id="buyLink"
+            href="#"
+            target="_blank"
+            class="mt-6 inline-block border border-black text-black px-4 py-2 rounded"
+          >
+            Beli sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white py-6 mt-10">
+      <p class="font-semibold">Follow My Instagram</p>
+      <p class="font-bold">@Zave.Studio</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      const products = {
+        1: {
+          title: "Baju Eksklusif",
+          price: "Rp 100.000",
+          img: "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+          thumbs: [
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+          ],
+          buyLink: "http://shopee.co.id/zave.studio",
+          desc: ["100% Cotton", "Desain premium", "Ukuran All Size"],
+        },
+        2: {
+          title: "Topi Eksklusif Limited Edition",
+          price: "Rp 200.000",
+          img: "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+          thumbs: [
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+          ],
+          buyLink: "http://shopee.co.id/zave.studio",
+          desc: ["Topi unik", "Terbatas", "Nyaman dipakai"],
+        },
+        3: {
+          title: "Topi Eksklusif Limited Edition",
+          price: "Rp 200.000",
+          img: "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+          thumbs: [
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+          ],
+          buyLink: "http://shopee.co.id/zave.studio",
+          desc: ["Topi unik", "Terbatas", "Nyaman dipakai"],
+        },
+        4: {
+          title: "Topi Eksklusif Limited Edition",
+          price: "Rp 200.000",
+          img: "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+          thumbs: [
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+          ],
+          buyLink: "http://shopee.co.id/zave.studio",
+          desc: ["Topi unik", "Terbatas", "Nyaman dipakai"],
+        },
+      };
+
+      function showProduct(id) {
+        const p = products[id];
+        document.getElementById("homePage").classList.add("hidden");
+        document.getElementById("productPage").classList.remove("hidden");
+
+        document.getElementById("productImg").src = p.img;
+        document.getElementById("productTitle").textContent = p.title;
+        document.getElementById("productPrice").textContent = p.price;
+        document.getElementById("buyLink").href = p.buyLink;
+
+        const thumbContainer = document.getElementById("thumbContainer");
+        thumbContainer.innerHTML = "";
+        p.thumbs.forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.className = "w-14 h-14 object-cover border cursor-pointer";
+          img.onclick = () => (document.getElementById("productImg").src = src);
+          thumbContainer.appendChild(img);
+        });
+
+        const descList = document.getElementById("descList");
+        descList.innerHTML = "";
+        p.desc.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          descList.appendChild(li);
+        });
+      }
+
+      function backToHome() {
+        document.getElementById("productPage").classList.add("hidden");
+        document.getElementById("homePage").classList.remove("hidden");
+      }
+    </script>
+
+    
+  </body>
+</html>
