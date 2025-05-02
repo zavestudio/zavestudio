@@ -24,11 +24,9 @@
       </head>      
   <body class="bg-gray-100 text-center">
     <!-- Header -->
-    <header class="border-b py-5 flex justify-center items-center fixed bg-black w-full">
+    <header class="border-b py-1 flex justify-center items-center fixed bg-white w-full">
       <img
-        src=""
-        alt="Zave Studio"
-        class="h-5"
+        src="zave.logo.png"class="h-16"
       />
     </header>
 
@@ -43,73 +41,18 @@
   onclick="showProduct(1)"
 >
   <img
-    src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp"
+    src="back.png"
     class="w-fit h-52 object-cover rounded mx-auto"
   />
   <p class="mt-3 font-medium text-gray-700 text-center text-sm">
     Coming Soon
   </p>
+  <p class="text-center font-bold text-black text-sm"></p>
 </div>
 
-
-      <div
-        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
-        onclick="showProduct(2)"
-      >
-        <img
-          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
-          class="w-fit h-52 object-cover rounded mx-auto"
-        />
-        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
-          Coming Soon
-        </p>
-        <p class="text-center font-bold text-black text-sm"></p>
-      </div>
-
-      <div
-        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
-        onclick="showProduct(3)"
-      >
-        <img
-          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
-          class="w-fit h-52 object-cover rounded mx-auto"
-        />
-        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
-          Coming Soon
-        </p>
-        <p class="text-center font-bold text-black text-sm"></p>
-      </div>
-
-      <div
-        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
-        onclick="showProduct(4)"
-      >
-        <img
-          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
-          class="w-fit h-52 object-cover rounded mx-auto"
-        />
-        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
-          Coming Soon
-        </p>
-        <p class="text-center font-bold text-black text-sm"></p>
-      </div>
-
-      <div
-        class="bg-white p-3 rounded-lg shadow hover:scale-105 transition-transform duration-300 cursor-pointer "
-        onclick="showProduct(4)"
-      >
-        <img
-          src="https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp"
-          class="w-fit h-52 object-cover rounded mx-auto"
-        />
-        <p class="mt-3 font-medium text-gray-700 text-center text-sm">
-          Coming Soon
-        </p>
-      </div>
-
     </main>
-
-    <div class="flex flex-col items-center my-10">
+    
+        <div class="flex flex-col items-center my-10">
       <h3 class="text-xl font-bold mb-4">OUR SHOP</h3>
       <a href="http://shopee.co.id/zave.studio" target="_blank"
          class="flex items-center gap-2 border-2 border-black px-4 py-2 rounded-full hover:bg-orange-100 transition">
@@ -117,9 +60,6 @@
         <span class="text-orange-500 font-medium text-lg">Shopee</span>
       </a>
     </div>
-    
-    
-    
 
     <!-- Halaman Produk -->
     <div id="productPage" class="hidden px-4 py-10 max-w-4xl mx-auto text-left">
@@ -167,15 +107,15 @@
     <script>
       const products = {
         1: {
-          title: "Baju Eksklusif",
-          price: "Rp 100.000",
-          img: "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
+          title: "ZAVE BLUEFLY",
+          price: "Coming Soon",
+          img: "front.png",
           thumbs: [
-            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_1_5_1728210521121_resized1024-jpg.webp",
-            "https://d2kchovjbwl1tk.cloudfront.net/vendor/3899/product/Artboard_4_7_1728210521230_resized1024-jpg.webp",
+            "front.png",
+            "back.png",
           ],
           buyLink: "http://shopee.co.id/zave.studio",
-          desc: ["100% Cotton Fleece", "Desain premium", "Ukuran All Size"],
+          desc: ["100% Cotton", "Plastisol", "Stylish"],
         },
         2: {
           title: "Topi Eksklusif Limited Edition",
