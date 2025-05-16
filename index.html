@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zave Studio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .menu {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('JASON.jpeg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .shop-button {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      color: white;
+      border: 3px solid white;
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0); /* Transparent */
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .shop-button:hover {
+      background-color: rgba(0, 0, 0, 0.6); /* Black on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="menu">☰</div>
+    <img src="zave.logo.png" alt="Zave Logo" class="logo">
+    <div></div> <!-- Kosongkan untuk menjaga jarak seimbang -->
+  </header>
+
+  <div class="hero">
+    <a href="http://shopee.co.id/zave.studio" class="shop-button">SHOP HERE</a>
+  </div>
+
+</body>
+</html>
