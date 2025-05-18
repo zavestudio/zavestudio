@@ -1,194 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zave Studio</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body, html {
-      font-family: sans-serif;
-      height: 100%;
-    }
-    header {
-      background-color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 40px;
-    }
-    .menu-btn {
-      font-size: 24px;
-      cursor: pointer;
-    }
-    .menu-info {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 10px;
-      background-color: white;
-      padding: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-radius: 5px;
-      z-index: 1001;
-    }
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #333; line-height: 1.5; }
+    a { text-decoration: none; }
+
+    /* Header */
+    header { background: #fff; padding: 1rem; display: flex; justify-content: center; align-items: center; }
+    header img { height: 40px; max-width: 100%; }
+
+    /* Slider container with 4:5 aspect ratio */
     .slider {
-      margin-top: 60px;
       position: relative;
       width: 100%;
-      height: 100vh;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
+      margin-bottom: 2rem;
     }
     .slides {
       display: flex;
-      width: 500%;
+      width: 500%; /* 5 slides */
       height: 100%;
-      animation: slide 25s infinite;
+      transition: transform 1s ease;
     }
     .slide {
-      width: 100%;
-      height: 100%;
+      width: 20%; /* each slide = 1/5 */
       flex-shrink: 0;
-      background-size: cover;
-      background-position: center;
+      height: 100%;
     }
-    .shop-btn {
+    .slide img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Shop button overlay */
+    .shop-button {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      padding: 15px 30px;
-      border: 2px solid white;
-      color: white;
-      background-color: transparent;
-      font-size: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      padding: 0.75rem 2rem;
+      border: 2px solid #fff;
+      background: transparent;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 999px;
+      transition: background 0.3s ease, color 0.3s ease;
       z-index: 10;
-      text-decoration: none;
-      display: inline-block;
+      white-space: nowrap;
     }
-    .shop-btn:active {
-      background-color: black;
-      color: white;
+    .shop-button.clicked,
+    .shop-button:focus {
+      background: #000;
+      color: #fff;
     }
-    .form-section {
-      padding: 40px 20px;
-      background-color: #f9f9f9;
-      text-align: center;
+
+    /* Feedback section */
+    #feedback { max-width: 600px; margin: 0 auto 3rem; padding: 0 1rem; text-align: center; }
+    #feedback h2 { margin-bottom: 1rem; font-size: 1.5rem; }
+    #feedback form { display: flex; flex-direction: column; gap: 0.75rem; }
+    #feedback textarea {
+      resize: vertical;
+      min-height: 120px;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
     }
-    .form-section h2 {
-      margin-bottom: 20px;
-    }
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    input, textarea {
-      padding: 10px;
-      font-size: 16px;
-      width: 100%;
-    }
-    button[type="submit"] {
-      background-color: black;
-      color: white;
-      padding: 10px;
+    #feedback button {
+      padding: 0.75rem;
       border: none;
+      background: #000;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 4px;
       cursor: pointer;
     }
-    @keyframes slide {
-      0%, 20% { transform: translateX(0%); }
-      25%, 40% { transform: translateX(-100%); }
-      45%, 60% { transform: translateX(-200%); }
-      65%, 80% { transform: translateX(-300%); }
-      85%, 100% { transform: translateX(-400%); }
+    /* Notification */
+    .notification {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      background: #dff0d8;
+      color: #3c763d;
+      font-size: 1rem;
     }
-    @media (max-width: 768px) {
-      header {
-        padding: 8px 15px;
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      header { padding: 0.75rem; }
+      header img { height: 30px; }
+      .shop-button {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
       }
-      .logo {
-        height: 30px;
-      }
-      .menu-btn {
-        font-size: 20px;
-      }
-      .menu-info {
-        font-size: 14px;
-        top: 50px;
-      }
-      .shop-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-      }
-    }
-    @media (max-width: 480px) {
-      header {
-        padding: 6px 10px;
-      }
-      .logo {
-        height: 24px;
-      }
-      .menu-btn {
-        font-size: 18px;
-      }
-      .menu-info {
-        font-size: 12px;
-        top: 45px;
-        left: 5px;
-        padding: 8px;
-      }
-      .shop-btn {
-        padding: 8px 16px;
-        font-size: 14px;
-        border-width: 1px;
-      }
+      #feedback { padding: 0 0.5rem; }
+      #feedback h2 { font-size: 1.25rem; }
+      #feedback textarea { font-size: 0.9rem; }
+      #feedback button { font-size: 0.9rem; padding: 0.6rem; }
+      .notification { font-size: 0.9rem; padding: 0.6rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    <img src="zave.logo.png" alt="Zave Logo" class="logo" />
-    <div class="menu-info" id="menuInfo">
-      TikTok: Zave.Studio<br />
-      Gmail: studiozave@gmail.com
-    </div>
+    <img src="zave.logo.png" alt="Zave Logo">
   </header>
 
+  <!-- Slider -->
   <div class="slider">
-    <div class="slides">
-      <div class="slide" style="background-image: url('back.PNG')"></div>
-      <div class="slide" style="background-image: url('felix.PNG')"></div>
-      <div class="slide" style="background-image: url('fly.JPG')"></div>
-      <div class="slide" style="background-image: url('louis.JPG')"></div>
-      <div class="slide" style="background-image: url('person.PNG')"></div>
+    <div class="slides" id="slides">
+      <div class="slide"><img src="felix.PNG" alt="Slide 1"></div>
+      <div class="slide"><img src="louis.JPG" alt="Slide 2"></div>
+      <div class="slide"><img src="fly.JPG" alt="Slide 3"></div>
+      <div class="slide"><img src="jason.jpeg" alt="Slide 4"></div>
+      <div class="slide"><img src="person.PNG" alt="Slide 5"></div>
     </div>
-    <a href="https://shopee.co.id/zave.studio" class="shop-btn">SHOP HERE</a>
+    <a href="https://shopee.co.id/zave.studio" target="_blank" rel="noopener" class="shop-button" id="shopButton">SHOP HERE</a>
   </div>
-  
+
+  <!-- Feedback / Kritik dan Saran -->
+  <section id="feedback">
+    <h2>GIVE ME YOUR IDEA</h2>
+    <form id="feedbackForm" action="https://formspree.io/f/mgvkddje" method="POST">
+      <textarea name="message" placeholder="Nama dan Ide mu"></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <div class="notification" id="notification">Pesan terkirim! Terima kasih atas masukan Anda.</div>
+  </section>
+
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menuInfo');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    // Slider logic (slide left)
+    const slidesContainer = document.getElementById('slides');
+    const totalSlides = slidesContainer.children.length;
+    let index = 0;
+    const slideWidthPercent = 100 / totalSlides;
+    const intervalTime = 3000; // 3 seconds
+
+    function goToSlide(i) {
+      index = (i + totalSlides) % totalSlides;
+      slidesContainer.style.transform = `translateX(-${index * slideWidthPercent}%)`;
     }
+    function nextSlide() { goToSlide(index + 1); }
+    setInterval(nextSlide, intervalTime);
+
+    // Shop button click effect
+    const shopBtn = document.getElementById('shopButton');
+    shopBtn.addEventListener('click', function(e) {
+      this.classList.add('clicked');
+      setTimeout(() => window.open(this.href, '_blank'), 150);
+      e.preventDefault();
+    });
+
+    // Feedback form submission via AJAX, stay on page, show notification
+    const form = document.getElementById('feedbackForm');
+    const notification = document.getElementById('notification');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          notification.style.display = 'block';
+          form.reset();
+        } else {
+          notification.textContent = 'Terjadi kesalahan. Coba lagi.';
+          notification.style.display = 'block';
+        }
+      }).catch(() => {
+        notification.textContent = 'Terjadi kesalahan. Coba lagi.';
+        notification.style.display = 'block';
+      });
+    });
   </script>
+
 </body>
 </html>
